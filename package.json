@@ -1,0 +1,23 @@
+{
+  "name": "aico-project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["api", "web"],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "lint": "eslint . --no-inline-config",
+    "test": "vitest run",
+    "smoke": "vitest run --config vitest.config.smoke.ts --configLoader runner"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@types/node": "24.19.1",
+    "eslint": "9.39.5",
+    "eslint-plugin-security": "4.2.0",
+    "globals": "17.13.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.1",
+    "vitest": "5.0.3"
+  }
+}

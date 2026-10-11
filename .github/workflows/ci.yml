@@ -1,0 +1,21 @@
+# The status the AI Company orchestrator requires on main is `aico/checks` (published by the worker after its sandboxed
+# install, build, lint and test). This workflow runs the same steps on GitHub for visibility.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run lint
+      - run: npm test
